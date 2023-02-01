@@ -2,13 +2,12 @@ from sqlalchemy import Table, Column
 from sqlalchemy.sql.sqltypes import String
 import sys
 sys.path.append('/mnt/c/Users/User/Desktop/Holberton/capstone_project/config')
-sys.path.append('/mnt/c/Users/User/Desktop/Holberton/capstone_project/etl')
 from db import meta, engine, conn
-import pandas as pd
-from investors_data_structuring import investors_data
+
 
 
 consolidated = Table('consolidated', meta, 
+                Column('id', String(255), primary_key=True),
                 Column('investors_name', String(255)),
                 Column('Techstars_companies_invested', String(2000)),
                 Column('Website', String(255)),
@@ -26,11 +25,3 @@ consolidated = Table('consolidated', meta,
                 Column('Connections', String(255)), extend_existing=True)
 
 meta.create_all(engine)
-
-conn.execute(consolidated.select()).fetchall()
-
-table = meta.tables[ 'consolidated' ]
-
-frame = investors_data.to_sql("consolidated", con=engine, if_exists='append', schema='techstars_db', index=False)
-
-print(frame)
