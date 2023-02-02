@@ -1,11 +1,12 @@
 import sys
+import os
 
-sys.path.append('/mnt/c/Users/User/Desktop/Holberton/capstone_project/config')
-sys.path.append('/mnt/c/Users/User/Desktop/Holberton/capstone_project/models')
-sys.path.append('/mnt/c/Users/User/Desktop/Holberton/capstone_project/schemas')
+sys.path.append(os.path.abspath(os.path.join(os.getcwd(), os.pardir)) + '/config')
+sys.path.append(os.path.abspath(os.path.join(os.getcwd(), os.pardir)) + '/models')
+sys.path.append(os.path.abspath(os.path.join(os.getcwd(), os.pardir)) + '/schemas')
 
 from fastapi import APIRouter
-from db import conn
+from config.db import conn
 from consolidate import consolidated
 from investors import Investor
 from uuid import uuid4
