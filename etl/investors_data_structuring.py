@@ -1,7 +1,9 @@
 import pandas as pd
+import os
 
 
-investors_data = pd.read_csv('/mnt/c/Users/User/Desktop/Holberton/capstone_project/etl/seed_data_investors_list.csv', encoding='UTF-8')
+investors_data = pd.read_csv(os.path.abspath(os.path.join(os.getcwd(), os.pardir)) + '/etl/seed_data_investors_list.csv', 
+    encoding='UTF-8')
 
 
 investors_data.rename(columns={"Investor name": "investors_name"}, inplace=True)

@@ -1,8 +1,10 @@
 from sqlalchemy import Table, Column
 from sqlalchemy.sql.sqltypes import String
 import sys
-sys.path.append('/mnt/c/Users/User/Desktop/Holberton/capstone_project/config')
-from db import meta, engine, conn
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.getcwd(), os.pardir)) + '/config')
+from config.db import meta, engine, conn
 
 
 
