@@ -5,7 +5,7 @@ sys.path.append(os.path.abspath(os.path.join(os.getcwd(), os.pardir)) + '/config
 sys.path.append(os.path.abspath(os.path.join(os.getcwd(), os.pardir)) + '/models')
 sys.path.append(os.path.abspath(os.path.join(os.getcwd(), os.pardir)) + '/schemas')
 
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 from config.db import conn
 from models.consolidate import consolidated
 from schemas.investors import Investor
@@ -41,7 +41,13 @@ def post_investor(investor: Investor):
     description="Get a single investor by Id",
 )
 def get_investor(id: str):
-    return conn.execute(consolidated.select().where(consolidated.c.id == id)).first()._asdict()
+
+    try:
+        result = conn.execute(consolidated.select().where(consolidated.c.id == id)).first()._asdict()
+    except AttributeError:
+        raise HTTPException(status_code=404, detail="Investor not found")
+    return result
+
 
 @investor_consolidated.put(
     "/investors/{id}", tags=["investors"], response_model=Investor, description="Update an Investor by Id"
@@ -56,7 +62,11 @@ def update_investor(investor: Investor, id: str):
     )
     consolidated.update()
     conn.commit()
-    return conn.execute(consolidated.select().where(consolidated.c.id == id)).first()._asdict()
+    try:
+        result = conn.execute(consolidated.select().where(consolidated.c.id == id)).first()._asdict()
+    except AttributeError:
+        raise HTTPException(status_code=404, detail="Investor not found")
+    return result
 
 
 @investor_consolidated.delete("/investors/{id}", tags=["investors"], status_code=HTTP_204_NO_CONTENT)
