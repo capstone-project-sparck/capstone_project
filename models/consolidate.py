@@ -4,7 +4,7 @@ import sys
 import os
 
 sys.path.append(os.path.abspath(os.path.join(os.getcwd(), os.pardir)) + '/config')
-from db import meta, engine, conn
+from config.db import meta, engine, conn
 
 
 
