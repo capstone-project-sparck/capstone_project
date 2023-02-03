@@ -7,8 +7,8 @@ sys.path.append(os.path.abspath(os.path.join(os.getcwd(), os.pardir)) + '/schema
 
 from fastapi import APIRouter
 from config.db import conn
-from consolidate import consolidated
-from investors import Investor
+from models.consolidate import consolidated
+from schemas.investors import Investor
 from uuid import uuid4
 from starlette.status import HTTP_204_NO_CONTENT
 from typing import List
@@ -27,27 +27,12 @@ def get_investors():
 
 @investor_consolidated.post('/investors', status_code=201)
 def post_investor(investor: Investor):
-    new_investor = {
-        "id": str(uuid4()),
-        "investors_name": investor.investors_name,
-        "Techstars_companies_invested": investor.Techstars_companies_invested,
-        "Website": investor.Website,
-        "Primary_Investor_Type": investor.Primary_Investor_Type,
-        "Preferred_Investment_Types": investor.Preferred_Investment_Types,
-        "Preferred_Industry": investor.Preferred_Industry,
-        "Preferred_Verticals": investor.Preferred_Verticals,
-        "Preferred_Geography": investor.Preferred_Geography,
-        "Preferred_Investment_Amount": investor.Preferred_Investment_Amount,
-        "Primary_Contact": investor.Primary_Contact,
-        "Primary_Contact_Title": investor.Primary_Contact_Title,
-        "Primary_Contact_Email": investor.Primary_Contact_Email,
-        "HQ_Location": investor.HQ_Location,
-        "Investor_Status": investor.Investor_Status,
-        "Connections": investor.Connections
-    }
-    result = conn.execute(consolidated.insert().values(new_investor))
+    new_investor_id = str(uuid4())
+    new_investor = investor.dict()
+    new_investor['id'] = new_investor_id
+    conn.execute(consolidated.insert().values(new_investor))
     conn.commit()
-    return conn.execute(consolidated.select().where(consolidated.c.id == result.lastrowid)).first()._asdict()
+    return conn.execute(consolidated.select().where(consolidated.c.id == new_investor_id)).first()._asdict()
 
 @investor_consolidated.get(
     "/investors/{id}",
@@ -65,24 +50,11 @@ def update_investor(investor: Investor, id: str):
     conn.execute(
         consolidated.update()
         .values(
-            investors_name= investor.investors_name,
-            Techstars_companies_invested= investor.Techstars_companies_invested,
-            Website= investor.Website,
-            Primary_Investor_Type= investor.Primary_Investor_Type,
-            Preferred_Investment_Types= investor.Preferred_Investment_Types,
-            Preferred_Industry= investor.Preferred_Industry,
-            Preferred_Verticals= investor.Preferred_Verticals,
-            Preferred_Geography= investor.Preferred_Geography,
-            Preferred_Investment_Amount= investor.Preferred_Investment_Amount,
-            Primary_Contact= investor.Primary_Contact,
-            Primary_Contact_Title= investor.Primary_Contact_Title,
-            Primary_Contact_Email= investor.Primary_Contact_Email,
-            HQ_Location= investor.HQ_Location,
-            Investor_Status= investor.Investor_Status,
-            Connections= investor.Connections
+            **{k: v for k, v in investor.dict().items() if v != ""}
         )
         .where(consolidated.c.id == id)
     )
+    consolidated.update()
     conn.commit()
     return conn.execute(consolidated.select().where(consolidated.c.id == id)).first()._asdict()
 
