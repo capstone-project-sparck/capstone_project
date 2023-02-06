@@ -1,7 +1,8 @@
 import pandas as pd
 import os
+import uuid
 
-data_route = os.path.abspath(os.path.join(os.getcwd(), os.pardir)) + '/etl/seed_data_investors_list.csv'
+data_route = os.path.abspath(os.path.join(os.getcwd(), os.pardir)) + '/etl/Investors_full_list.csv'
 investors_data = pd.read_csv(data_route, encoding='UTF-8')
 
 
@@ -19,3 +20,9 @@ investors_data.rename(columns={"Primary Contact Email": "Primary_Contact_Email"}
 investors_data.rename(columns={"HQ Location": "HQ_Location"}, inplace=True)
 investors_data.rename(columns={"Investor Status": "Investor_Status"}, inplace=True)
 investors_data.rename(columns={"Connections": "Connections"}, inplace=True)
+
+investors_data = investors_data.drop("Connections", axis='columns')
+investors_data['id'] = investors_data['Website'].map(lambda x: uuid.uuid3(uuid.NAMESPACE_URL, x))
+print(investors_data[["investors_name", "Website"]])
+
+
