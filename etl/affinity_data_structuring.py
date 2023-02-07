@@ -1,3 +1,4 @@
+from investors_data_structuring import investors_data
 import pandas as pd
 import os
 import uuid
@@ -61,20 +62,23 @@ connections_data['Connections'] = connections_data["connections_list"].map(split
 connections_data_rearranged = connections_data[['Name', 'Website', 'Referral_Name', 'Connections']].explode('Connections')
 connections_data_rearranged['name'] = connections_data_rearranged['Connections'].map(get_name)
 connections_data_rearranged['email'] = connections_data_rearranged['Connections'].map(get_email)
-connections_data_rearranged['Website'] = connections_data_rearranged['Website'].map(lambda x: "www."+x)
-connections_data_rearranged['investor_id'] = connections_data_rearranged['Website'].map(lambda x: uuid.uuid3(uuid.NAMESPACE_URL, x))
-connections_data_rearranged['id'] = connections_data_rearranged['investor_id'].map(lambda x: str(uuid.uuid4()))
+connections_data_rearranged['Website'] = connections_data_rearranged['Website'].map(lambda x: x if 'www.' in x else 'www.' + x)
+connections_data_rearranged['investors_id'] = connections_data_rearranged['Website'].map(lambda x: str(uuid.uuid3(uuid.NAMESPACE_URL, x)))
+connections_data_rearranged['id'] = connections_data_rearranged['investors_id'].map(lambda x: str(uuid.uuid4()))
 connections_data_rearranged['type'] = "company"
 
-referrals = connections_data_rearranged[["Referral_Name","investor_id"]].drop_duplicates(keep='first')
+referrals = connections_data_rearranged[["Referral_Name","investors_id"]].drop_duplicates(keep='first')
 referrals["dict_name_email"] = referrals['Referral_Name'].map(split_string)
 referrals["name"] = referrals["dict_name_email"].map(get_name)
 referrals["email"] = referrals["dict_name_email"].map(get_email)
-referrals["id"] = referrals["investor_id"].map(lambda x: str(uuid.uuid4()))
-referrals = referrals[["id", "investor_id", "name", "email"]]
+referrals["id"] = referrals["investors_id"].map(lambda x: str(uuid.uuid4()))
+referrals = referrals[["id", "investors_id", "name", "email"]]
 referrals["type"] = "referral"
 
-connections_data_rearranged = connections_data_rearranged[["id", "investor_id", "name", "email", "type"]]
+connections_data_rearranged = connections_data_rearranged[["id", "investors_id", "name", "email", "type"]]
 
 connections_data_rearranged_final = connections_data_rearranged.append(referrals, ignore_index=True)
-connections_data_rearranged_final.to_csv('datos_conexion.csv')
+
+connections_data_rearranged_final = connections_data_rearranged_final[connections_data_rearranged_final['name'].astype(bool)]
+
+connections_data_rearranged_final = connections_data_rearranged_final[connections_data_rearranged_final['investors_id'].isin(investors_data['id'])]
