@@ -7,12 +7,12 @@ sys.path.append(os.path.abspath(os.path.join(os.getcwd(), os.pardir)) + '/schema
 
 from fastapi import APIRouter, HTTPException
 from config.db import conn
-from models.consolidate import consolidated
+from models.consolidate import Consolidated
 from schemas.investors import Investor
 from uuid import uuid4
+from config.db import session
 from starlette.status import HTTP_204_NO_CONTENT
 from typing import List
-
 
 investor_consolidated = APIRouter()
 
@@ -23,7 +23,7 @@ investor_consolidated = APIRouter()
     description="Get a list of all investors",
 )
 def get_investors():
-    return [row._asdict() for row in conn.execute(consolidated.select()).fetchall()]
+    return [session.query(Consolidated).order_by(Consolidated.id).all()]
 
 @investor_consolidated.post('/investors', status_code=201)
 def post_investor(investor: Investor):

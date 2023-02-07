@@ -18,3 +18,4 @@ class Investor(BaseModel):
     HQ_Location: Optional[str] = ""
     Investor_Status: Optional[str] = ""
     Connections: Optional[str] = ""
+

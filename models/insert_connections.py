@@ -6,16 +6,14 @@ sys.path.append(os.path.abspath(os.path.join(os.getcwd(), os.pardir)) + '/models
 sys.path.append(os.path.abspath(os.path.join(os.getcwd(), os.pardir)))
 from config.db import session
 import numpy as np
-from etl.investors_data_structuring import investors_data
-from models.consolidate import Consolidated
+from etl.affinity_data_structuring import connections_data_rearranged_final
+from models.consolidate import Connection
+
+connections_data = connections_data_rearranged_final.replace(np.nan, 'empty')
+connections_to_dict = connections_data.to_dict("records")
 
 
-investors_data = investors_data.replace(np.nan, 'empty')
-investors_to_dict = investors_data.to_dict("records")
-
-
-for row in investors_to_dict:
-    investor = Consolidated(**row)
-    session.add(investor)
+for row in connections_to_dict:
+    connection = Connection(**row)
+    session.add(connection)
     session.commit()
-

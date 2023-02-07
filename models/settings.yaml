@@ -1,0 +1,5 @@
+user: 'spark'
+password: 'spark_dev'
+host: 'localhost'
+port: '3306'
+db: 'techstars_db'

@@ -1,7 +1,6 @@
 import pandas as pd
 import os
 import uuid
-
 data_route = os.path.abspath(os.path.join(os.getcwd(), os.pardir)) + '/etl/Investors_full_list.csv'
 investors_data = pd.read_csv(data_route, encoding='UTF-8')
 
@@ -10,19 +9,21 @@ investors_data.rename(columns={"Investor name": "investors_name"}, inplace=True)
 investors_data.rename(columns={"Techstars companies invested": "Techstars_companies_invested"}, inplace=True)
 investors_data.rename(columns={"Primary Investor Type": "Primary_Investor_Type"}, inplace=True)
 investors_data.rename(columns={"Preferred Industry": "Preferred_Industry"}, inplace=True)
-investors_data.rename(columns={"Preferred Verticals": "Preferred_Verticals"}, inplace=True)
-investors_data.rename(columns={"Preferred Geography": "Preferred_Geography"}, inplace=True)
-investors_data.rename(columns={"Preferred Investment Types": "Preferred_Investment_Types"}, inplace=True)
-investors_data.rename(columns={"Preferred Investment Amount (in millions)": "Preferred_Investment_Amount"}, inplace=True)
-investors_data.rename(columns={"Primary Contact": "Primary_Contact"}, inplace=True)
-investors_data.rename(columns={"Primary Contact Title": "Primary_Contact_Title"}, inplace=True)
-investors_data.rename(columns={"Primary Contact Email": "Primary_Contact_Email"}, inplace=True)
+investors_data.rename(columns={"Preferred verticals": "Preferred_Verticals"}, inplace=True)
+investors_data.rename(columns={"Preferred geography": "Preferred_Geography"}, inplace=True)
+investors_data.rename(columns={"Preferred investment types": "Preferred_Investment_Types"}, inplace=True)
+investors_data.rename(columns={"Preferred investment amount": "Preferred_Investment_Amount"}, inplace=True)
+investors_data.rename(columns={"Primary contact": "Primary_Contact"}, inplace=True)
 investors_data.rename(columns={"HQ Location": "HQ_Location"}, inplace=True)
-investors_data.rename(columns={"Investor Status": "Investor_Status"}, inplace=True)
-investors_data.rename(columns={"Connections": "Connections"}, inplace=True)
+investors_data.rename(columns={"Primary contact title": "Primary_Contact_Title"}, inplace=True)
+investors_data.rename(columns={"Primary contact email": "Primary_Contact_Email"}, inplace=True)
+investors_data.rename(columns={"Investor status": "Investor_Status"}, inplace=True)
+
+investors_data['Website'] = investors_data['Website'].map(lambda x: x if 'www.' in x else 'www.' + x)
 
 investors_data = investors_data.drop("Connections", axis='columns')
-investors_data['id'] = investors_data['Website'].map(lambda x: uuid.uuid3(uuid.NAMESPACE_URL, x))
-print(investors_data[["investors_name", "Website"]])
+investors_data['id'] = investors_data['Website'].map(lambda x: str(uuid.uuid3(uuid.NAMESPACE_URL, x)))
+
+investors_data = investors_data.drop_duplicates(subset=['id'])
 
 
