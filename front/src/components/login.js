@@ -2,32 +2,9 @@ import { Navigate } from "react-router-dom";
 import React from "react";
 
 
-export default function Login(){
+export default function Login(props){
     const imgUrl="https://cdn.brandfolder.io/70W92OEX/as/q0vc05-3hg50o-8p4uw5/logo-dark.png"
 
-    let [loginPass, setLoginPass] = React.useState(false)
-    let [credentials, setCredentials] = React.useState({})
-
-    function getCredentials(event){
-        setCredentials((oldValue)=>{
-            console.log(credentials)
-            return {...oldValue, [event.target.name]:event.target.value}
-        }
-        )
-    }
-
-    const arrayPassword = [{
-        Username:"alejandroG", Password:"testpass"
-    }]
-    //console.log(arrayPassword)
-    function LoginTest(){
-        console.log(credentials)
-        for(let elem of arrayPassword){
-            if(elem.Username === credentials.Username && elem.Password === credentials.Password){
-                setLoginPass(oldValue=>!oldValue)
-                }
-        }
-    }
 
     return(<div className="mainLogin" >
     <div className="logins">
@@ -37,14 +14,14 @@ export default function Login(){
         </div>
         <div className="inputs">
             <label htmlFor="username">
-                Username<input type="text" name="Username" onChange={getCredentials} />
+                Username<input type="text" name="Username" onChange={(e)=>props.getCredentials(e)} />
             </label>
             <label htmlFor="username">
-                Password<input type="password" name="Password" onChange={getCredentials}/>
+                Password<input type="password" name="Password" onChange={(e)=>props.getCredentials(e)}/>
             </label>
         </div>
         <div className="buttons">
-            <button name="login" onClick={LoginTest}>{!loginPass?"Enter":<Navigate to ="/Sources"/>}</button>
+            <button name="login" onClick={()=>props.LoginTest()}>{!props.loginPass?"Enter":<Navigate to ="/Sources"/>}</button>
             <button name="clear">Clear</button>
         </div>
     </div>

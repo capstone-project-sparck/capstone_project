@@ -105,14 +105,16 @@ margin-right: 290px;
     box-shadow: inset 0px 0px 4px 4px black;
     font-size: 30px;
     font-family: "Suisse Int'l";
+    text-shadow: 1px 1px 2px black;
     color: white;
-    background: rgb(63,251,72);background: radial-gradient(circle, rgba(63,251,72,1) 0%, rgba(59,187,59,1) 100%);
+    background: #39C463;
     margin-bottom: 40px;
+    font-weight: 600;
 }
 
 .buttonSec button[name="secondB"]{
-    background: rgb(8,26,122);
-    background: radial-gradient(circle, rgba(8,26,122,1) 0%, rgba(75,193,255,1) 100%);
+    background: #39C463;
+    font-weight: 600;
 }
 
 
@@ -123,6 +125,8 @@ margin-right: 290px;
     box-shadow: inset 0px 0px 4px 4px black;
     font-size: 12px;
     font-family: "Suisse Int'l";
+    text-shadow: 1px 1px 2px black;
     color: white;
-    background: rgb(63,251,72);background: radial-gradient(circle, rgba(63,251,72,1) 0%, rgba(59,187,59,1) 100%);
+    background: #39C463;
+    font-weight: 600;
 }
