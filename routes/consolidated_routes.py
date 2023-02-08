@@ -6,10 +6,13 @@ sys.path.append(os.path.abspath(os.path.join(os.getcwd(), os.pardir)) + '/models
 sys.path.append(os.path.abspath(os.path.join(os.getcwd(), os.pardir)) + '/schemas')
 
 from fastapi import APIRouter, HTTPException
+from config.db import session
 from config.db import conn
 from models.consolidate import Consolidated
+from models.consolidate import Connection as Connection_table
 from schemas.investors import Investor
-from uuid import uuid4
+from schemas.connections import Connection
+import uuid 
 from config.db import session
 from starlette.status import HTTP_204_NO_CONTENT
 from typing import List
@@ -24,21 +27,28 @@ investor_consolidated = APIRouter()
 )
 def get_investors():
 
-    final_list = []
-    for row in session.query(Consolidated).order_by(Consolidated.id).all():
-        result_dict = row.__dict__
-        result_dict["connections"] = [conn.__dict__ for conn in row.Connections]
-        final_list.append(result_dict)
-    return final_list
-
+    return [{**row.__dict__, "Connections": [conn.__dict__ for conn in row.Connections]}
+     for row in session.query(Consolidated).order_by(Consolidated.id).all()]
+    
 @investor_consolidated.post('/investors', status_code=201)
 def post_investor(investor: Investor):
-    new_investor_id = str(uuid4())
+    new_investor_id = str(uuid.uuid3(uuid.NAMESPACE_URL, investor.Website))
     new_investor = investor.dict()
+    conns = new_investor["Connections"]
+    del new_investor["Connections"]
     new_investor['id'] = new_investor_id
-    conn.execute(consolidated.insert().values(new_investor))
-    conn.commit()
-    return conn.execute(consolidated.select().where(consolidated.c.id == new_investor_id)).first()._asdict()
+    
+    conns_list = []
+    for conn in conns:
+        conn['id'] = str(str(uuid.uuid4()))
+        conn['investors_id'] = new_investor_id
+        conns_list.append(Connection_table(**conn))
+    new_investor_obj = Consolidated(**new_investor)
+    new_investor_obj.Connections = conns_list
+    session.add(new_investor_obj)
+    session.commit()
+    return {**session.query(Consolidated).filter(Consolidated.id == new_investor_id)[0].__dict__, 
+            "Connections": conns}
 
 @investor_consolidated.get(
     "/investors/{id}",
@@ -49,35 +59,42 @@ def post_investor(investor: Investor):
 def get_investor(id: str):
 
     try:
-        result = conn.execute(consolidated.select().where(consolidated.c.id == id)).first()._asdict()
-    except AttributeError:
+        result = session.query(Consolidated).filter(Consolidated.id == id)[0]
+        result_dict = result.__dict__
+        result_dict["Connections"] = [conn.__dict__ for conn in result.Connections]
+    except Exception:
         raise HTTPException(status_code=404, detail="Investor not found")
-    return result
+    return result_dict
 
 
 @investor_consolidated.put(
     "/investors/{id}", tags=["investors"], response_model=Investor, description="Update an Investor by Id"
 )
 def update_investor(investor: Investor, id: str):
-    conn.execute(
-        consolidated.update()
-        .values(
-            **{k: v for k, v in investor.dict().items() if v != ""}
-        )
-        .where(consolidated.c.id == id)
-    )
-    consolidated.update()
-    conn.commit()
+    
+    dict_obj = {k: v for k, v in investor.dict().items() if v != ""}
+    del dict_obj["Connections"]
+    session.query(Consolidated).filter(Consolidated.id == id).\
+    update(dict_obj, synchronize_session = False)
+    session.commit()
+
     try:
-        result = conn.execute(consolidated.select().where(consolidated.c.id == id)).first()._asdict()
-    except AttributeError:
+        result = session.query(Consolidated).filter(Consolidated.id == id)[0]
+        result_dict = result.__dict__
+        result_dict["Connections"] = [conn.__dict__ for conn in result.Connections]
+    except Exception:
         raise HTTPException(status_code=404, detail="Investor not found")
-    return result
+    return result_dict
 
 
 @investor_consolidated.delete("/investors/{id}", tags=["investors"], status_code=HTTP_204_NO_CONTENT)
 def delete_investors(id: str):
-    conn.execute(consolidated.delete().where(consolidated.c.id == id))
-    conn.commit()
+    investor_obj = session.query(Consolidated).filter(Consolidated.id == id)[0]
+    session.delete(investor_obj)
+
+    conn_obj = session.query(Connection_table).filter(Connection_table.investors_id == id)
+    for conn in conn_obj:
+        session.delete(conn)
+    session.commit()
     return "Investor deleted successfully"
 

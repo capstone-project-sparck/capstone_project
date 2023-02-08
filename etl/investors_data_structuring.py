@@ -20,7 +20,6 @@ investors_data.rename(columns={"Primary contact email": "Primary_Contact_Email"}
 investors_data.rename(columns={"Investor status": "Investor_Status"}, inplace=True)
 
 investors_data['Website'] = investors_data['Website'].map(lambda x: x if 'www.' in x else 'www.' + x)
-
 investors_data = investors_data.drop("Connections", axis='columns')
 investors_data['id'] = investors_data['Website'].map(lambda x: str(uuid.uuid3(uuid.NAMESPACE_URL, x)))
 
