@@ -23,7 +23,13 @@ investor_consolidated = APIRouter()
     description="Get a list of all investors",
 )
 def get_investors():
-    return [session.query(Consolidated).order_by(Consolidated.id).all()]
+
+    final_list = []
+    for row in session.query(Consolidated).order_by(Consolidated.id).all():
+        result_dict = row.__dict__
+        result_dict["connections"] = [conn.__dict__ for conn in row.Connections]
+        final_list.append(result_dict)
+    return final_list
 
 @investor_consolidated.post('/investors', status_code=201)
 def post_investor(investor: Investor):

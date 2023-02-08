@@ -17,5 +17,5 @@ class Investor(BaseModel):
     Primary_Contact_Email: Optional[str] = ""
     HQ_Location: Optional[str] = ""
     Investor_Status: Optional[str] = ""
-    Connections: Optional[str] = ""
+    Connections: Optional[list] = []
 
