@@ -32,8 +32,7 @@
 .backSquare {
     width: 674px;
     height: 742px;
-    background: rgb(63,251,72);
-    background: radial-gradient(circle, rgba(63,251,72,1) 92%, rgba(72,83,72,1) 100%);
+    background: #39C463;
     position: absolute;
     z-index: 900;
     border-radius: 30px;
@@ -69,18 +68,24 @@
 }
 
 .buttons button{
+    color: white;
     width: 150px;
     height: 65px;
+    border:1px solid black;
     border-radius: 20px;
     box-shadow: inset 0px 0px 4px 4px black;
     font-size: 30px;
     font-family: "Suisse Int'l";
-    color: white;
-    background: rgb(63,251,72);background: radial-gradient(circle, rgba(63,251,72,1) 0%, rgba(59,187,59,1) 100%);
+    background: #39C463;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px black;
     margin-bottom: 40px;
 }
 
 .buttons button[name="clear"]{
-    background: rgb(8,26,122);
-    background: radial-gradient(circle, rgba(8,26,122,1) 0%, rgba(75,193,255,1) 100%);
+    color: white;
+    font-weight: 600;
+    background: #39C463;
+    text-shadow: 1px 1px 2px black;
+
 }
