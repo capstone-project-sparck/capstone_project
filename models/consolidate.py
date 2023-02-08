@@ -9,6 +9,7 @@ from sqlalchemy.orm import relationship
 
 
 class Consolidated(base):
+  """Class for table Consolidated"""
   __tablename__ = "consolidated"
   id = Column(String(255), primary_key=True)
   investors_name = Column(String(255))
@@ -28,6 +29,7 @@ class Consolidated(base):
   Connections = relationship('Connection', backref="connections")
 
 class Connection(base):
+  """Class for table Connection"""
   __tablename__ = "connections"
   id = Column(String(255), nullable=False, primary_key=True)
   investors_id = Column(String(255), ForeignKey("consolidated.id"))
@@ -35,7 +37,5 @@ class Connection(base):
   email = Column(String(255))
   type = Column(String(255))
 
-
-
-
+#Create the tables in the database
 base.metadata.create_all(engine)

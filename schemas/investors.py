@@ -2,10 +2,11 @@ from pydantic import BaseModel
 from typing import Optional
 
 class Investor(BaseModel):
+    """Schema for a Investor"""
     id: Optional[str] = ""
     investors_name: Optional[str] = ""
     Techstars_companies_invested: Optional[str] = ""
-    Website: Optional[str] = ""
+    Website: str = ""
     Primary_Investor_Type: Optional[str] = ""
     Preferred_Investment_Types: Optional[str] = ""
     Preferred_Industry: Optional[str] = ""
