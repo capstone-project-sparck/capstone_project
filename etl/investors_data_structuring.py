@@ -24,5 +24,3 @@ investors_data = investors_data.drop("Connections", axis='columns')
 investors_data['id'] = investors_data['Website'].map(lambda x: str(uuid.uuid3(uuid.NAMESPACE_URL, x)))
 
 investors_data = investors_data.drop_duplicates(subset=['id'])
-
-
