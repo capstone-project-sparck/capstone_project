@@ -16,6 +16,23 @@ We used MySql for the database for its simplicity and because we did not have a 
 
 We had some challenges using the Affinity API because the data of connections we needed was not available with it. We hope to solve this challenge in the future and add this feature so the data are updated. 
 
+### Files
+
+| File  | Directory  | Description |
+| :------ |:--------------:| :---------------------|
+| `app.py` | home | Controller of the app. The main file which executes the app. |
+| `db.py`  | config  | Creates the connection to the database. |
+| `setup_mysql.sql` | database   | Creates the database and the user. |
+| `affinity_data_structuring.py` | etl | Structures the connections data to fit the database table. |
+| `investors_data_structuring.py` | etl | Structures the investors data to fit the database table. |
+| `consolidate.py` | models | Creates the investors and connections tables in SQLAlchemy. |
+| `insert_investors_db.py` | models | Inserts the investors data into the database. |
+| `insert_connections.py` | models | Inserts the connections data into the database. |
+| `consolidated_routes.py` | routes  | Defines the CRUD for the investors in the API. |
+| `connection_routes.py` | routes |  Defines the CRUD for the connections in the API. |
+| `investors.py` | schemas  | Defines the schema for an investors object for the API. |
+| `connections.py` | schemas | Defines the schema for an connections object for the API. |
+
 ## How to install and run the project
 
 In order to install and run the project, you first need to clone the repository. Then, you need to create a Python Virtual Environment with the command `venv <name of the environment>`. Then you need to install the requirements with the command `pip install -r requirements.txt`. Finally you need to get inside the front directoy and install the react dependencies with the command `npm install`.
