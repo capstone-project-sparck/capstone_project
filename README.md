@@ -21,3 +21,11 @@ We had some challenges using the Affinity API because the data of connections we
 In order to install and run the project, you first need to clone the repository. Then, you need to create a Python Virtual Environment with the command `venv <name of the environment>`. Then you need to install the requirements with the command `pip install -r requirements.txt`. Finally you need to get inside the front directoy and install the react dependencies with the command `npm install`.
 
 You first need to get into the home directoy and run the command `uvicorn app:app` to run the API. Finally, get inside the front directory and run the command `npm start` to run the front. 
+
+## How to Use the Project
+
+## Authors
+
+<a href = 'https://www.github.com/Crisgrva'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/github.svg"/></a> [@Alejandro García](https://github.com/Caballero018) | [@Juan Esteban Hernandez](https://github.com/otalorajuand) | [@Juan David Otálora](https://github.com/otalorajuand)
+
+<a href = 'https://www.twitter.com/crisgrvc'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/twitter.svg"/></a> [@Alejandro García](https://twitter.com/Alejand51178128) | [@Juan Esteban Hernandez](https://twitter.com/juandotalora) | [@Juan David Otálora](https://twitter.com/juandotalora)
