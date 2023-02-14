@@ -16,12 +16,15 @@ We used MySql for the database for its simplicity and because we did not have a 
 
 We had some challenges using the Affinity API because the data of connections we needed was not available with it. We hope to solve this challenge in the future and add this feature so the data are updated. 
 
-## Diagrams
+## Diagrams and Flow Chart
 
-![diagrama_alto_nivel](https://user-images.githubusercontent.com/22607461/218613094-3271e7c6-4f2c-4a68-b13c-b16547a0f6f3.jpeg)
-![diagrama_nivel_medio](https://user-images.githubusercontent.com/22607461/218613173-c0cca9f0-cb12-4a54-a940-793b8d3e9bf1.jpeg)
+![higher_level](https://user-images.githubusercontent.com/22607461/218857148-9e2e8025-ff18-408a-b8f7-93c5c3cd9825.jpeg)
+![medium-level](https://user-images.githubusercontent.com/22607461/218857302-9073a781-60f7-4f6c-88a0-07846c71f6af.jpeg)
+![flow_chart](https://user-images.githubusercontent.com/22607461/218859274-351ef7a5-1762-4cd5-8c72-68553fc1131f.jpeg)
 
 ### Files
+
+#### Backend
 
 | File  | Directory  | Description |
 | :------ |:--------------| :---------------------|
@@ -38,6 +41,21 @@ We had some challenges using the Affinity API because the data of connections we
 | `investors.py` | schemas  | Defines the schema for an investors object for the API. |
 | `connections.py` | schemas | Defines the schema for an connections object for the API. |
 
+#### Frontend
+
+| File  | Directory  | Description |
+| :------ |:--------------| :---------------------|
+| `index.html` | public | Controller of the app. The main file which executes the app. |
+| `manifest.json`  | public  | Creates the connection to the database. |
+| `robots.txt` | public   | Creates the database and the user. |
+| `App.js` | src | Structures the connections data to fit the database table. |
+| `index.js` | src | Structures the investors data to fit the database table. |
+| `objects.json` | src | Creates the investors and connections tables in SQLAlchemy. |
+| `table.js` | src | Inserts the investors data into the database. |
+| `/components` | src | Inserts the connections data into the database. |
+| `/style` | src  | Defines the CRUD for the investors in the API. |
+| `/node_modules` | home |  Defines the CRUD for the connections in the API. |
+
 ## How to install and run the project
 
 In order to install and run the project, you first need to clone the repository. Then, you need to create a Python Virtual Environment with the command `venv <name of the environment>`. Then you need to install the requirements with the command `pip install -r requirements.txt`. Finally you need to get inside the front directoy and install the react dependencies with the command `npm install`.
@@ -48,6 +66,6 @@ You first need to get into the home directoy and run the command `uvicorn app:ap
 
 ## Authors
 
-<a href = 'https://www.github.com/Crisgrva'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/github.svg"/></a> [@Alejandro García](https://github.com/Caballero018) | [@Juan Esteban Hernandez](https://github.com/otalorajuand) | [@Juan David Otálora](https://github.com/otalorajuand)
+<a href = 'https://www.github.com/Crisgrva'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/github.svg"/></a> [@Alejandro García](https://github.com/alejandrodgz) | [@Juan Esteban Hernandez](https://github.com/Jehp00) | [@Juan David Otálora](https://github.com/otalorajuand)
 
-<a href = 'https://www.twitter.com/crisgrvc'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/twitter.svg"/></a> [@Alejandro García](https://twitter.com/Alejand51178128) | [@Juan Esteban Hernandez](https://twitter.com/juandotalora) | [@Juan David Otálora](https://twitter.com/juandotalora)
+<a href = 'https://www.twitter.com/crisgrvc'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/twitter.svg"/></a> [@Alejandro García](https://twitter.com/dagarciaz?t=SsP1iYjxXsK7z9nBZxwSvQ&s=08) | [@Juan Esteban Hernandez](https://twitter.com/0110Juanes?t=zVQP_NQVayj4JzjPc0OdQQ&s=09) | [@Juan David Otálora](https://twitter.com/juandotalora)
