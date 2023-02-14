@@ -60,7 +60,7 @@ We had some challenges using the Affinity API because the data of connections we
 
 In order to install and run the project, you first need to clone the repository. Then, you need to create a Python Virtual Environment with the command `venv <name of the environment>`. Then you need to install the requirements with the command `pip install -r requirements.txt`. Finally you need to get inside the front directoy and install the react dependencies with the command `npm install`.
 
-Once you have installed all the dependencies, you need to create the database and the user executing the file `set_up.sql` with the command `cat database/setup_mysql.sql | mysql`. Then you need to create the tables with the command `python models/consolidate.py`. Finally, you need to insert the data executing the following commands in order, `python models/insert_investors_db.py` and then `insert_connections.py`. This process has to be done only the first time you are installing the project.
+Once you have installed all the dependencies, you need to create the database and the user executing the file `set_up.sql` with the command `cat database/setup_mysql.sql | mysql`. Then you need to create the tables with the command `python models/consolidate.py`. Finally, you need to insert the data executing the following commands in order, `python models/insert_investors_db.py` and then `python models/insert_connections.py`. This process has to be done only the first time you are installing the project.
 
 You first need to get into the home directoy and run the command `uvicorn app:app` to run the API. Finally, get inside the front directory and run the command `npm start` to run the front. 
 
