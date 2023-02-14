@@ -1,0 +1,84 @@
+.stackInputs {
+    margin-left: 1%;
+    color: white !important;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+ 
+.stackInputs div {
+    max-width: 18rem;
+}
+
+.stackInputs div>p{
+    color: rgb(114, 114, 114);
+    font-size: small
+}
+
+.stackInputs div > input {
+    border: black;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 4px 2px rgb(193, 192, 192);
+}
+
+.divFilter {
+    display: flex;
+    flex-flow: row wrap;
+    max-width: 90%;
+    background-color: black;
+}
+
+.stackFilters {
+    max-width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content:center;
+    align-items: center;
+}
+
+.filterButton {
+    margin-top: 10%;
+    width: 100%;
+    text-shadow: 1px 1px rgb(144, 137, 137);
+    max-width: 200px;
+    font-size: larger !important;
+    box-shadow: inset 0px 0px 2px 1px rgb(95, 94, 94);
+    border-radius: 10px !important;    
+    background-color: #39C463 !important;
+    border: 1px solid black !important;
+    transition: 1s;
+}
+
+.table .filterButton {
+    margin-top: 2rem;
+    text-shadow: 1px 1px rgb(144, 137, 137);
+    font-size: larger !important;
+    box-shadow: inset 0px 0px 2px 1px rgb(95, 94, 94);
+    border-radius: 10px !important;    
+    background-color: #39C463 !important;
+    border: 1px solid black !important;
+    transition: 1s;
+}
+
+.filterButton:hover {
+    background-color: #369a54 !important;
+    transition: 1s;
+}
+
+.table {
+    padding-top: min(1rem);
+    max-width: 90%;
+}
+
+.contTable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
