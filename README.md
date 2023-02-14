@@ -16,10 +16,15 @@ We used MySql for the database for its simplicity and because we did not have a 
 
 We had some challenges using the Affinity API because the data of connections we needed was not available with it. We hope to solve this challenge in the future and add this feature so the data are updated. 
 
+## Diagrams
+
+![diagrama_alto_nivel](https://user-images.githubusercontent.com/22607461/218613094-3271e7c6-4f2c-4a68-b13c-b16547a0f6f3.jpeg)
+![diagrama_nivel_medio](https://user-images.githubusercontent.com/22607461/218613173-c0cca9f0-cb12-4a54-a940-793b8d3e9bf1.jpeg)
+
 ### Files
 
 | File  | Directory  | Description |
-| :------ |:--------------:| :---------------------|
+| :------ |:--------------| :---------------------|
 | `app.py` | home | Controller of the app. The main file which executes the app. |
 | `db.py`  | config  | Creates the connection to the database. |
 | `setup_mysql.sql` | database   | Creates the database and the user. |
