@@ -1,4 +1,4 @@
-# Application for Visualization and Filtering of Investors and Connections Techstars
+# Application for Visualization and Filtering of Investors and Connections for Techstars
 
 ![Contributors](https://img.shields.io/github/contributors/capstone-project-sparck/capstone_project?style=plastic)
 ![Forks](https://img.shields.io/github/forks/capstone-project-sparck/capstone_project)
@@ -56,7 +56,7 @@ We had some challenges using the Affinity API because the data of connections we
 | `/style` | src  | Defines the CRUD for the investors in the API. |
 | `/node_modules` | home |  Defines the CRUD for the connections in the API. |
 
-## How to install and run the project
+## How to Install and Run the Project
 
 In order to install and run the project, you first need to clone the repository. Then, you need to create a Python Virtual Environment with the command `venv <name of the environment>`. Then you need to install the requirements with the command `pip install -r requirements.txt`. Finally you need to get inside the front directoy and install the react dependencies with the command `npm install`.
 
