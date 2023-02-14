@@ -66,7 +66,7 @@ You first need to get into the home directoy and run the command `uvicorn app:ap
 
 ## How to Use the Project
 
-![screen_rec](https://user-images.githubusercontent.com/22607461/218869806-b114dd0f-4322-425d-95e1-7d25a5b1fd8c.mov)
+![ezgif com-video-to-gif](https://user-images.githubusercontent.com/22607461/218870747-08d3ca18-8d8c-42cc-912d-d8dee30facb5.gif)
 
 
 ## Authors
