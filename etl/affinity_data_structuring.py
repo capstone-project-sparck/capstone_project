@@ -45,7 +45,7 @@ def get_name(dict_1):
 
 def get_email(dict_1):
     try:
-        result = dict_1['email']
+        result = dict_1['email'].replace('>', '')
     except Exception:
         return ''
     return result
@@ -85,6 +85,7 @@ connections_data_rearranged['investors_id'] = connections_data_rearranged['Websi
 connections_data_rearranged['id'] = connections_data_rearranged['investors_id'].map(
     lambda x: str(uuid.uuid4()))
 connections_data_rearranged['type'] = "company"
+
 
 # Getting referrals connections
 referrals = connections_data_rearranged[[
