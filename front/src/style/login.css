@@ -1,91 +1,22 @@
-.mainLogin{
-    position: relative;
-    left: 33vw;
-    margin-top: 60px;
-}
-.logins {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    width: 674px;
-    height: 742px;
+.loginContainer {
+    max-width: 480px !important ;
     background-color: black;
-    border-radius: 30px 50px 30px 50px;
+
+    margin-top: 7rem;
     color:white;
-    position: absolute;
-    z-index: 950;
-    
 }
 
-.Logo {
-    margin-top: 100px;
+.logo {
+    max-width: 70%;
+    margin-bottom: 10%;
 }
 
-.Logo img {
-    width: 492px;
-    margin-bottom: -20px;
+.loginButton {
+    background-color: #39C463 !important;
+    border: 1px solid #39C463 !important;
 }
 
-
-
-.backSquare {
-    width: 674px;
-    height: 742px;
-    background: #39C463;
-    position: absolute;
-    z-index: 900;
-    border-radius: 30px;
-    box-shadow: 15px 15px 20px 3px rgba(0, 0, 0, 0.7);
+.loginButton:hover {
+    background-color: #309f51 !important;
 }
 
-.inputs {
-    margin-top: 100px;
-    font-size: 30px;
-    display: flex;
-    flex-direction: column;
-}
-
-.inputs input {
-    border: black;
-    width: 355px;
-    height: 48px;
-    border-radius: 20px;
-    box-shadow: inset 0px 0px 4px 4px black;
-    margin-left: 20px;
-    margin-bottom: 50px;
-    font-size: 30px;
-    font-family: "Suisse Int'l";
-    text-align: center;    
-}
-
-.buttons {
-    width: 355px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-}
-
-.buttons button{
-    color: white;
-    width: 150px;
-    height: 65px;
-    border:1px solid black;
-    border-radius: 20px;
-    box-shadow: inset 0px 0px 4px 4px black;
-    font-size: 30px;
-    font-family: "Suisse Int'l";
-    background: #39C463;
-    font-weight: 600;
-    text-shadow: 1px 1px 2px black;
-    margin-bottom: 40px;
-}
-
-.buttons button[name="clear"]{
-    color: white;
-    font-weight: 600;
-    background: #39C463;
-    text-shadow: 1px 1px 2px black;
-
-}

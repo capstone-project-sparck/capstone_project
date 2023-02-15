@@ -1,0 +1,29 @@
+.navbarC {
+    box-shadow: 1px 1px 5px 1px rgb(45, 45, 45);
+    background-color: black;
+}
+
+.Container img {
+    max-width: 30%;
+    min-width: 150px;
+}
+
+.whiteText {
+    margin-left: 10px;
+    color: white !important;
+    font-size: larger !important;
+    transition: 1s !important;
+}
+
+.whiteText:hover {
+    color: whitesmoke !important;
+    border-radius: 23px !important;
+    background-color: #39C463 !important;
+    transition: 1s !important;
+}
+
+
+.toggle {
+    background-color: rgb(18, 18, 18) !important;
+    border-color:black !important;
+}
