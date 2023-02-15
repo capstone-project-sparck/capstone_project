@@ -117,7 +117,7 @@ export default function DataTable() {
   };*/
     
   const handleExportData = () => {
-    csvExporter.generateCsv(DataJson);
+    turnFilters ? csvExporter.generateCsv(map_obj) : csvExporter.generateCsv(dataApi);
   };
 
   //useEffect to avoid infinite loop getting data from api

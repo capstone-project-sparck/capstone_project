@@ -27,5 +27,4 @@ export default function Login(props){
     </div>
     <div className="backSquare"></div>
     </div>)
-
 }
