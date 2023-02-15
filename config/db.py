@@ -10,7 +10,7 @@ with open('settings.yaml', "r") as f:
 
 #Create the connection with the database
 conn_route = f"mysql+pymysql://{params['user']}:{params['password']}@{params['host']}:{params['port']}/{params['db']}"
-engine = create_engine(conn_route)
+engine = create_engine(conn_route, pool_pre_ping=True)
 Session = sessionmaker(bind=engine)
 session = Session()
 base = declarative_base()
