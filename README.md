@@ -45,16 +45,12 @@ We had some challenges using the Affinity API because the data of connections we
 
 | File  | Directory  | Description |
 | :------ |:--------------| :---------------------|
-| `index.html` | public | Controller of the app. The main file which executes the app. |
-| `manifest.json`  | public  | Creates the connection to the database. |
-| `robots.txt` | public   | Creates the database and the user. |
-| `App.js` | src | Structures the connections data to fit the database table. |
-| `index.js` | src | Structures the investors data to fit the database table. |
-| `objects.json` | src | Creates the investors and connections tables in SQLAlchemy. |
-| `table.js` | src | Inserts the investors data into the database. |
-| `/components` | src | Inserts the connections data into the database. |
-| `/style` | src  | Defines the CRUD for the investors in the API. |
-| `/node_modules` | home |  Defines the CRUD for the connections in the API. |
+| `index.html` | public | Base HTML file of the DOM. |
+| `App.js` | src | Controller file for the components. |
+| `index.js` | src | Creates all the react components based on id in HTML. |
+| `table.js` | src | File that contains the table and the filters. |
+| `/components` | src | Directory that contains the individual components. |
+| `/style` | src  | Directory that contains the CSS files and pictures. |
 
 ## How to Install and Run the Project
 
