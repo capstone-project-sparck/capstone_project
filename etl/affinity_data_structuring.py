@@ -16,7 +16,7 @@ def split_list(list_1):
             except Exception:
                 continue
             elem_dict['name'] = name
-            elem_dict['email'] = email
+            elem_dict['email'] = email.replace('>', '')
             result.append(elem_dict)
     return result
 
@@ -68,7 +68,7 @@ connections_data.rename(
 
 # Creation of connections column
 connections_data["Connections"] = connections_data["People_connected_to_investor"].str.split(
-    '; ').map(split_list)
+    '; ')[:20].map(split_list)
 # connections_data['Connections'] = connections_data["connections_list"].map(split_list)
 
 # Rearranging of data
