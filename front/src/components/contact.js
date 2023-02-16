@@ -2,12 +2,12 @@ import NavbarC from "./Navbar"
 import Card from "react-bootstrap/Card"
 import Footer from "./footer";
 import CardGroup from "react-bootstrap/CardGroup"
-import cardJuan from "./style/photos/card_juan.jpeg"
-import cardAlejo from "./style/photos/alejoCard.png"
-import cardJuanE from "./style/photos/juanCard.jpg"
-import logoGit from "./style/photos/logo/logoGit.png"
-import logoIn from "./style/photos/logo/logoIn.png"
-import logoTweet from "./style/photos/logo/logoTweet.png"
+import cardJuan from "../style/photos/card_juan.jpeg"
+import cardAlejo from "../style/photos/alejoCard.png"
+import cardJuanE from "../style/photos/juanCard.jpg"
+import logoGit from "../style/photos/logo/logoGit.png"
+import logoIn from "../style/photos/logo/logoIn.png"
+import logoTweet from "../style/photos/logo/logoTweet.png"
 
 export default function Contact(props){
     
