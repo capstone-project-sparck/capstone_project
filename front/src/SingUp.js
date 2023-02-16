@@ -5,33 +5,27 @@ import Image from "react-bootstrap/Image"
 import { Navigate } from "react-router-dom"
 import { useRef } from "react";
 import bcrypt from 'bcryptjs'
+//import {saveAs} from 'file-saver'
 
-export default function Login(props){
+export default function SingUp(props){
     const imgUrl="https://cdn.brandfolder.io/70W92OEX/as/q0vc05-3hg50o-8p4uw5/logo-dark.png"
     const emailInputRef = useRef()
     const passwordInputRef = useRef()
 
-    function loginForm(e) {
+    function SingUpForm(e) {
+      const list_users = []
       e.preventDefault();
+      const email = emailInputRef.current.value;
       const password = passwordInputRef.current.value;
+      const hashedPassword = bcrypt.hashSync(password, 10)
   
-      // Call Get API here
-      const getHashedPassword = JSON.parse(window.localStorage.getItem('Login')).hashedPassword
-      console.log(getHashedPassword)
+      // Call Post API here
   
-      //Match Password
-      bcrypt.compare(password, getHashedPassword, function(err, isMatch) {
-          if(err){
-              throw err;
-          }
-          else if(!isMatch){
-              alert("Password Incorrect")
-          }
-          else{
-              console.log("Password Correct")
-              props.loginPass = true
-          }
-      })
+      const user = window.localStorage.setItem('Login', JSON.stringify({email, hashedPassword}))
+      list_users.push(user)
+
+      console.log(list_users)
+      console.log("Welcome to TechStars")
   }
 
     return(<div style={{backgroundColor:"black"}}>
@@ -56,8 +50,8 @@ export default function Login(props){
       <Form.Group className="mb-4" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Check me out" />
       </Form.Group>
-      <Button type="submit" className="loginButton" onClick={(e)=>loginForm(e)} name="login">
-      {!props.loginPass?"Enter":<Navigate to ="/Sources"/>}
+      <Button type="submit" className="loginButton" onClick={(e)=>SingUpForm(e)} name="sing up">
+      {!props.loginPass?"SingUp":<Navigate to ="/Sources"/>}
       </Button>
     </Form>
     </Container>
