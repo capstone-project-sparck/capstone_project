@@ -2,12 +2,12 @@
     max-width: 480px !important ;
     background-color: black;
 
-    margin-top: 7rem;
+    margin-top: 8rem;
     color:white;
 }
 
-.logo {
-    max-width: 70%;
+.logot {
+    width: 70%;
     margin-bottom: 10%;
 }
 
