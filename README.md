@@ -66,6 +66,8 @@ You first need to get into the home directoy and run the command `uvicorn app:ap
 
 ## Authors
 
-<a href = 'https://www.github.com/Crisgrva'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/github.svg"/></a> [@Alejandro García](https://github.com/alejandrodgz) | [@Juan Esteban Hernandez](https://github.com/Jehp00) | [@Juan David Otálora](https://github.com/otalorajuand)
+<a href = 'https://www.github.com'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/github.svg"/></a> [@Alejandro García](https://github.com/alejandrodgz) | [@Juan Esteban Hernandez](https://github.com/Jehp00) | [@Juan David Otálora](https://github.com/otalorajuand)
 
-<a href = 'https://www.twitter.com/crisgrvc'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/twitter.svg"/></a> [@Alejandro García](https://twitter.com/dagarciaz?t=SsP1iYjxXsK7z9nBZxwSvQ&s=08) | [@Juan Esteban Hernandez](https://twitter.com/0110Juanes?t=zVQP_NQVayj4JzjPc0OdQQ&s=09) | [@Juan David Otálora](https://twitter.com/juandotalora)
+<a href = 'https://www.twitter.com'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/twitter.svg"/></a> [@Alejandro García](https://twitter.com/dagarciaz?t=SsP1iYjxXsK7z9nBZxwSvQ&s=08) | [@Juan Esteban Hernandez](https://twitter.com/0110Juanes?t=zVQP_NQVayj4JzjPc0OdQQ&s=09) | [@Juan David Otálora](https://twitter.com/juandotalora)
+
+<a href = 'https://www.linkedin.com'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/linkedin.svg"/></a> [@Alejandro García](https://www.linkedin.com/in/daniel-garcia-aa987b233/) | [@Juan Esteban Hernandez](https://twitter.com/0110Juanes?t=zVQP_NQVayj4JzjPc0OdQQ&s=09) | [@Juan David Otálora](https://twitter.com/juandotalora)
