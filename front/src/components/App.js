@@ -1,7 +1,7 @@
 import React from "react";
 import Login from "./login";
 import Filters from "./Filters";
-import Contact from "./contact";
+import Contact from "./Contact";
 import Protected from "./protected";
 import SingUp from "./SingUp";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
