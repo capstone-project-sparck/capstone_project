@@ -45,7 +45,7 @@ def get_name(dict_1):
 
 def get_email(dict_1):
     try:
-        result = dict_1['email'].replace('>', '')
+        result = dict_1['email']
     except Exception:
         return ''
     return result
@@ -68,7 +68,7 @@ connections_data.rename(
 
 # Creation of connections column
 connections_data["Connections"] = connections_data["People_connected_to_investor"].str.split(
-    '; ')[:20].map(split_list)
+    '; ').map(split_list).map(lambda x: x[:20])
 # connections_data['Connections'] = connections_data["connections_list"].map(split_list)
 
 # Rearranging of data
@@ -85,7 +85,6 @@ connections_data_rearranged['investors_id'] = connections_data_rearranged['Websi
 connections_data_rearranged['id'] = connections_data_rearranged['investors_id'].map(
     lambda x: str(uuid.uuid4()))
 connections_data_rearranged['type'] = "company"
-
 
 # Getting referrals connections
 referrals = connections_data_rearranged[[
