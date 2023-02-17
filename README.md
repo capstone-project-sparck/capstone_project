@@ -20,7 +20,7 @@ We had some challenges using the Affinity API because the data of connections we
 
 ![higher_level](https://user-images.githubusercontent.com/22607461/218857148-9e2e8025-ff18-408a-b8f7-93c5c3cd9825.jpeg)
 ![medium-level](https://user-images.githubusercontent.com/22607461/218857302-9073a781-60f7-4f6c-88a0-07846c71f6af.jpeg)
-![flow_chart](https://user-images.githubusercontent.com/22607461/218859274-351ef7a5-1762-4cd5-8c72-68553fc1131f.jpeg)
+![diagrama_de_archivos](https://user-images.githubusercontent.com/22607461/219759319-dee60c42-4da5-49e4-bd45-e5d98e29acde.jpeg)
 
 ### Files
 
