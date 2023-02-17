@@ -68,7 +68,7 @@ connections_data.rename(
 
 # Creation of connections column
 connections_data["Connections"] = connections_data["People_connected_to_investor"].str.split(
-    '; ').map(split_list)
+    '; ').map(split_list).map(lambda x: x[:20])
 # connections_data['Connections'] = connections_data["connections_list"].map(split_list)
 
 # Rearranging of data
