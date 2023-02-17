@@ -14,7 +14,6 @@ import Footers from "./footer";
 
 export default function Filters(props) { 
 
-
     /*all react states:
     *@filters: is used to get values from input and filter the table
     *@turnFilters: show the table after filtering
@@ -23,6 +22,22 @@ export default function Filters(props) {
     let [filters, setFilters] = React.useState({}) 
     let [turnFilters, setTurnFilters] = React.useState(false)
     let [dataApi, setDataApi] = React.useState([])
+    let [header, setHeader] = React.useState([])
+
+    //useEffect to avoid infinite loop getting data from api
+
+    React.useEffect(()=>{
+      const getData = async () => {
+        const data = await fetch("http://127.0.0.1:8000/investors")
+        const finalData = await data.json()
+        const headers = Object.keys(finalData[0])
+        setHeader(headers);
+        setDataApi(finalData)
+      }
+      getData()
+  },[])
+
+  console.log(dataApi)
 
 
     /*
@@ -39,11 +54,12 @@ export default function Filters(props) {
         },
         {
             "accessorKey": "investors_name",
-            "header": "investors_name",
+            "header": "investors name",
         },
         {
             "accessorKey": "Techstars_companies_invested",
-            "header": "Techstars_companies_invested"
+            "header": "Techstars companies invested",
+            size: 300
         },
         {
             "accessorKey": "Website",
@@ -51,50 +67,52 @@ export default function Filters(props) {
         },
         {
             "accessorKey": "Primary_Investor_Type",
-            "header": "Primary_Investor_Type"
+            "header": "Primary Investor Type",
+            size: 300
         },
         {
             "accessorKey": "Preferred_Investment_Types",
-            "header": "Preferred_Investment_Types",
+            "header": "Preferred Investment Types",
             size: 300,
         },
         {
             "accessorKey": "Preferred_Industry",
-            "header": "Preferred_Industry",
-            size: 300,
+            "header": "Preferred Industry"
         },
         {
             "accessorKey": "Preferred_Verticals",
-            "header": "Preferred_Verticals",
-            size: 300,
+            "header": "Preferred Verticals"
         },
         {
             "accessorKey": "Preferred_Geography",
-            "header": "Preferred_Geography"
+            "header": "Preferred Geography"
         },
         {
             "accessorKey": "Preferred_Investment_Amount",
-            "header": "Preferred_Investment_Amount",
+            "header": "Preferred Investment Amount",
+            size: 300
         },
         {
             "accessorKey": "Primary_Contact",
-            "header": "Primary_Contact"
+            "header": "Primary Contact"
         },
         {
             "accessorKey": "Primary_Contact_Title",
-            "header": "Primary_Contact_Title"
+            "header": "Primary Contact Title",
+            size: 300
         },
         {
             "accessorKey": "Primary_Contact_Email",
-            "header": "Primary_Contact_Email"
+            "header": "Primary Contact Email",
+            size: 300
         },
         {
             "accessorKey": "HQ_Location",
-            "header": "HQ_Location"
+            "header": "HQ Location"
         },
         {
             "accessorKey": "Investor_Status",
-            "header": "Investor_Status"
+            "header": "Investor Status"
         },
         ],
         [],
@@ -105,6 +123,8 @@ export default function Filters(props) {
     we need to find a way to export csv with nested
     objects and arrays
   */
+    
+
 
     const csvOptions = {
         fieldSeparator: ',',
@@ -113,7 +133,7 @@ export default function Filters(props) {
         showLabels: true,
         useBom: true,
         useKeysAsHeaders: false,
-        headers: columns.map((c) => c.header),
+        headers: header
     };
 
     const csvExporter = new ExportToCsv(csvOptions);
@@ -121,20 +141,14 @@ export default function Filters(props) {
     /*const handleExportRows = (rows) => {
       csvExporter.generateCsv(rows.map((row) => row.original));
     };*/
-      
+
+    const csvData = dataApi.map((object)=>{
+      return{...object, "Connections": JSON.stringify(object.Connections).replaceAll(/[/{}/[\]]/gm, '')}
+    })
+    console.log(csvData)
     const handleExportData = () => {
-      csvExporter.generateCsv(DataJson);
+      csvExporter.generateCsv(csvData);
     };
-    
-    //useEffect to avoid infinite loop getting data from api
-    React.useEffect(()=>{
-        const getData = async () => {
-          const data = await fetch("http://127.0.0.1:8000/investors")
-          const finalData = await data.json()
-          setDataApi(finalData)
-        }
-        getData()
-    },[])
 
     //filter creation with inputs
     function createFilter(event){
@@ -167,7 +181,7 @@ export default function Filters(props) {
 
     //filter function creates an object to parse with data
     // eslint-disable-next-line 
-    let map_obj = DataJson.filter((obj)=>{
+    let map_obj = dataApi.filter((obj)=>{
         let flag = 0
             for (let keys of Object.keys(obj)){
             for(let key of Object.keys(filters)){
@@ -205,7 +219,7 @@ export default function Filters(props) {
 
 
     return(
-        <>
+        <div style={{backgroundColor:"black", minHeight:"100vh"}}>
         <NavbarC />
         <div style={{backgroundColor:"black", paddingTop:"1rem"}}>{!turnFilters?
         <div className="divFilter">
@@ -263,7 +277,7 @@ export default function Filters(props) {
             <div className="table">
               <MaterialReactTable
                 columns={columns}
-                data={turnFilters?map_obj:DataJson}
+                data={turnFilters?map_obj:dataApi}
                 initialState={{ density: 'compact', pagination: { pageSize: 25, pageIndex: 0 }, 
                                 columnVisibility: { id: false }}}
                 muiTableContainerProps={{ sx: {maxHeight:"22rem"} }}
@@ -316,6 +330,6 @@ export default function Filters(props) {
               <Footers />
               </div>:<></>}
             </div>
-        </>
+        </div>
     )
 }

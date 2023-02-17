@@ -13,18 +13,26 @@ export default function SingUp(props){
     const passwordInputRef = useRef()
 
     function SingUpForm(e) {
-      const list_users = []
       e.preventDefault();
       const email = emailInputRef.current.value;
       const password = passwordInputRef.current.value;
-      const hashedPassword = bcrypt.hashSync(password, 10)
-  
+      const hashedPassword = bcrypt.hashSync(password, 10);
+      let list_users = JSON.parse(localStorage.getItem("login")); //JSON.parse(window.localStorage.getItem("login"))
+      
       // Call Post API here
-  
-      const user = window.localStorage.setItem('Login', JSON.stringify({email, hashedPassword}))
-      list_users.push(user)
 
-      console.log(list_users)
+      let user = {
+        "email": email,
+        "hashedPassword": hashedPassword
+      }
+
+      //window.localStorage.setItem('Login', JSON.stringify({email, hashedPassword}))
+      list_users.push(user)
+      let users = JSON.stringify(list_users)
+      window.localStorage.setItem('login', users)
+      //props.setLoginPass(true)
+
+      console.log(users)
       console.log("Welcome to TechStars")
   }
 

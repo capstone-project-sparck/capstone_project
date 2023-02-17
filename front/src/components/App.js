@@ -5,7 +5,6 @@ import Contact from "./contact";
 import Protected from "./protected";
 import SingUp from "./SingUp";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-//import {saveAs} from 'file-saver'
 
 export default function App(){
 
@@ -34,14 +33,15 @@ export default function App(){
   return(<>
   <BrowserRouter>
   <Routes>
-    <Route path="/" element={<Login loginPass={loginPass} getCredentials={getCredentials} credentials={credentials}
+    <Route path="/" element={<Login setLoginPass={setLoginPass} loginPass={loginPass} getCredentials={getCredentials} credentials={credentials}
         />} />
         <Route element={<Protected loginPass={loginPass}/>}>
             <Route path="/Sources" element={<Filters className="filters" setLoginPass={setLoginPass} />} />
             <Route path="/Contact" element={<Contact setLoginPass={setLoginPass} />} />
             {/*<Route path="/About" element={<About />} />*/}
         </Route>
-    <Route path="/SingUp" element={ <SingUp getCredentials={getCredentials} credentials={credentials} /> }/>
+        <Route path="/SingUp" element={ <SingUp getCredentials={getCredentials} credentials={credentials} 
+        setLoginPass={setLoginPass} loginPass={loginPass}/> }/>
   </Routes>
   </BrowserRouter>
   </>)
