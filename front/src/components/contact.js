@@ -21,8 +21,8 @@ export default function Contact(props){
                     <Card.Body>
                         <Card.Title>Alejandro Garcia Z.</Card.Title>
                         <Card.Text>
-                        · Software Developer <br/>
-                        · Bussiness Manager  <br/><span className="phone">Phone Number: <br/>+57 305 869 0385
+                        Software Developer <br/>
+                        Bussiness Manager  <br/><span className="phone">Phone Number: <br/>+57 305 869 0385
                         <br/>alejandro_garciaz13@outlook.com</span>
                         </Card.Text>
                     </Card.Body>
@@ -37,8 +37,8 @@ export default function Contact(props){
                     <Card.Body>
                         <Card.Title>Juan David Otalora</Card.Title>
                         <Card.Text>
-                        · Software Developer <br/>
-                        · Mathematical Engineer<br/>
+                        Software Developer <br/>
+                        Mathematical Engineer<br/>
                         <span className="phone">Phone Number: <br/>+57 320 333 8151
                         <br/>otalorajuand@gmail.com</span>
                         </Card.Text>
@@ -53,7 +53,7 @@ export default function Contact(props){
                     <Card.Img variant="top" className="imgCard" src={cardJuanE} />
                     <Card.Body>
                         <Card.Title>Juan E. Hernandez </Card.Title>
-                        <Card.Text> · Software Developer
+                        <Card.Text> Software Developer
                         </Card.Text>
                         <span className="phone">Phone Number: <br/>+57 304 424 5178
                         <br/>jehp01104006@gmail.com</span>
