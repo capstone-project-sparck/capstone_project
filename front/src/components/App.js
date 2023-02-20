@@ -10,21 +10,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 export default function App(){
 
   let [loginPass, setLoginPass] = React.useState(false)
-    
-  const arrayPassword = [{
-      Username:"alejandroG", Password:"testpass"
-  }]
 
-  function LoginTest(){
-      console.log(credentials)
-      for(let elem of arrayPassword){
-          if(elem.Username === credentials.Username &&
-               elem.Password === credentials.Password)
-          {
-              setLoginPass(true)
-              }
-      }
-  }
   
   let [credentials, setCredentials] = React.useState({})
 
@@ -39,13 +25,15 @@ export default function App(){
   return(<>
   <BrowserRouter>
   <Routes>
-    <Route path="/" element={<Login loginPass={loginPass} LoginTest={LoginTest} 
+    <Route path="/" element={<Login loginPass={loginPass}
         getCredentials={getCredentials} credentials={credentials}
         />} />
         <Route element={<Protected loginPass={loginPass}/>}>
             <Route path="/Sources" element={<Filters className="filters" setLoginPass={setLoginPass} />} />
             <Route path="/Contact" element={<Contact setLoginPass={setLoginPass} />} />
             <Route path="/Connections" element={<Connections setLoginPass={setLoginPass} />} />
+            <Route path="/SingUp" element={ <SingUp getCredentials={getCredentials} credentials={credentials} 
+            setLoginPass={setLoginPass} loginPass={loginPass}/> }/>
             {/*<Route path="/About" element={<About />} />*/}
         </Route>
   </Routes>
