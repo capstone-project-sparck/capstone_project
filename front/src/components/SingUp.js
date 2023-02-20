@@ -58,9 +58,7 @@ export default function SingUp(props){
       <Form.Group className="mb-4" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Check me out" />
       </Form.Group>
-      <Button type="submit" className="loginButton" onClick={(e)=>SingUpForm(e)} name="sing up">
-      {!props.loginPass?"SingUp":<Navigate to ="/Sources"/>}
-      </Button>
+      <Button type="submit" className="loginButton" onClick={(e)=>SingUpForm(e)} name="sing up">Sing Up</Button>
     </Form>
     </Container>
     </div>)

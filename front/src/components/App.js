@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import Login from "./login";
 import Filters from "./Filters";
@@ -51,4 +52,3 @@ export default function App(){
   </Routes>
   </BrowserRouter>
   </>)
-}
