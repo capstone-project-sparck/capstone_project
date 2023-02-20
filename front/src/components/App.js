@@ -1,7 +1,8 @@
 import React from "react";
 import Login from "./login";
+import SingUp from "./SingUp"
 import Filters from "./Filters";
-import Contact from "./contact";
+import Contact from "./Contact";
 import Protected from "./protected";
 import Connections from "./Connections";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
@@ -10,13 +11,11 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 export default function App(){
 
   let [loginPass, setLoginPass] = React.useState(false)
-
   
   let [credentials, setCredentials] = React.useState({})
 
   function getCredentials(event){
       setCredentials((oldValue)=>{
-          console.log(credentials)
           return {...oldValue, [event.target.name]:event.target.value}
       }
       )
@@ -25,7 +24,7 @@ export default function App(){
   return(<>
   <BrowserRouter>
   <Routes>
-    <Route path="/" element={<Login loginPass={loginPass}
+    <Route path="/" element={<Login setLoginPass={setLoginPass} loginPass={loginPass} 
         getCredentials={getCredentials} credentials={credentials}
         />} />
         <Route element={<Protected loginPass={loginPass}/>}>

@@ -2,35 +2,37 @@ import Container from "react-bootstrap/Container"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
 import Image from "react-bootstrap/Image"
-import { Navigate } from "react-router-dom"
+import ExportExcel from "react-export-excel"
 import { useRef } from "react";
 import bcrypt from 'bcryptjs'
+import ExcelColumn from "react-export-excel/dist/ExcelPlugin/elements/ExcelColumn"
 //import {saveAs} from 'file-saver'
 
 export default function SingUp(props){
     const imgUrl="https://cdn.brandfolder.io/70W92OEX/as/q0vc05-3hg50o-8p4uw5/logo-dark.png"
     const emailInputRef = useRef()
     const passwordInputRef = useRef()
+    const ExcelFile = ExportExcel.ExcelFile;
+    const ExcelSheet = ExportExcel.ExcelSheet;
+    const ExcelColumn = ExportExcel.ExcelColumn;
+    const getdata = JSON.parse(window.localStorage.getItem('login'));
 
     function SingUpForm(e) {
       e.preventDefault();
       const email = emailInputRef.current.value;
       const password = passwordInputRef.current.value;
       const hashedPassword = bcrypt.hashSync(password, 10);
-      let list_users = JSON.parse(localStorage.getItem("login")); //JSON.parse(window.localStorage.getItem("login"))
+      let list_users = getdata;
       
       // Call Post API here
-
       let user = {
         "email": email,
         "hashedPassword": hashedPassword
       }
 
-      //window.localStorage.setItem('Login', JSON.stringify({email, hashedPassword}))
       list_users.push(user)
       let users = JSON.stringify(list_users)
       window.localStorage.setItem('login', users)
-      //props.setLoginPass(true)
 
       console.log(users)
       console.log("Welcome to TechStars")
@@ -58,7 +60,13 @@ export default function SingUp(props){
       <Form.Group className="mb-4" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Check me out" />
       </Form.Group>
-      <Button type="submit" className="loginButton" onClick={(e)=>SingUpForm(e)} name="sing up">Sing Up</Button>
+      <ExcelFile element={<Button type="submit" className="loginButton" onClick={(e)=>SingUpForm(e)} name="sing up">
+      Sing Up</Button>} filename={"Users_list.csv"}>
+        <ExcelSheet data={getdata} name={"Users"}>
+          <ExcelColumn label="Email" value={emailInputRef} />
+          <ExcelColumn label="Password" value={passwordInputRef} />
+        </ExcelSheet>
+      </ExcelFile>
     </Form>
     </Container>
     </div>)
