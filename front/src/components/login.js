@@ -13,25 +13,29 @@ export default function Login(props){
 
     function loginForm(e) {
       e.preventDefault();
-      //const password = passwordInputRef.current.value;
-      console.log(JSON.parse(window.localStorage.getItem('login')).hashedPassword)
+      const password = passwordInputRef.current.value;
+      let getHashedPassword = []
       // Call Get API here
-      /*const getHashedPassword = JSON.parse(window.localStorage.getItem('login')).hashedPassword;
-      console.log(getHashedPassword)
-  
-      //Match Password
-      bcrypt.compare(password, getHashedPassword, function(err, isMatch) {
+      const users = JSON.parse(window.localStorage.getItem('login'))
+      users.forEach(element => {
+        getHashedPassword.push(Object.values(element)[1]);
+      });
+      console.log(typeof getHashedPassword)
+      getHashedPassword.forEach(element => {
+        //Match Password
+        bcrypt.compare(password, element, function(err, isMatch) {
           if(err){
               throw err;
           }
           else if(!isMatch){
-              alert("Password Incorrect")
+              console.log("Password Incorrect")
           }
           else{
               console.log("Password Correct")
               props.setLoginPass(true);
           }
-      })*/
+      })
+    });
   }
 
   return(<div style={{backgroundColor:"black"}}>

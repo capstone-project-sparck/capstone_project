@@ -1,0 +1,55 @@
+.cardsContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardsGroup {
+  margin-top: 1rem;
+  max-width: 70%;
+  min-width: 19rem;
+}
+
+.singleCard {
+  margin: 1rem  2rem  1rem  2rem;
+  background-color: black !important;
+  color: white;
+  text-align: center;
+  box-shadow: 2px 2px 4px 1px rgb(16, 16, 16);
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px !important;
+  transition: 1s !important;
+}
+
+
+.singleCard:hover {
+  background-color: rgb(43, 43, 43) !important;
+  top: -10px;
+  transition: 1s !important;
+}
+
+.imgCard {
+  border-radius: 50% !important;
+  max-width: 80%;
+  box-shadow: 2px 2px 5px 1px rgb(32, 32, 32);
+}
+
+.ButtonCard{
+  background-color: black !important;
+  border-color: white !important;
+}
+
+.logo {
+  max-width: 15%;
+  margin-right: 4%;
+}
+
+.phone {
+  font-size: 12px;
+  line-height:1.5;
+  color: rgb(204, 204, 204);
+}

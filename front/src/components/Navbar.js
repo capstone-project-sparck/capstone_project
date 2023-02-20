@@ -18,8 +18,8 @@ export default function NavbarC (props) {
             <Nav.Link as={Link} to="/Sources" className="whiteText">Filters</Nav.Link>
             <Nav.Link as={Link} to="/Contact" className="whiteText">Contact Us</Nav.Link>
             <Nav.Link as={Link} to="/" className="whiteText" onClick={()=>{props.setLoginPass(false)}}>Log Out</Nav.Link>
-            <Nav.Link as={Link} to="/SingUp" className="whiteText">Sing Up</Nav.Link>
             </Nav>
+            <Nav.Link as={Link} to="/SingUp" className="whiteText">Sing Up</Nav.Link>
         </Navbar.Collapse>
                 </Container>
             </Navbar>
