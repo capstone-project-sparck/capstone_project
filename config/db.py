@@ -1,3 +1,6 @@
+"""
+Creates the connection to the database.
+"""
 from sqlalchemy import create_engine
 from yaml.loader import SafeLoader
 from sqlalchemy.ext.declarative import declarative_base

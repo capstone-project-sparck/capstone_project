@@ -10,8 +10,12 @@ class User(base):
   """User class"""
   __tablename__ = "Users"
   id = Column(String(255), primary_key=True)
+<<<<<<< HEAD
   Email = Column(String(50))
   Password = Column(String(30))
+=======
+  email = Column(String(50))
+>>>>>>> main
   hashedPassword = Column(String(255))
 
 base.metadata.create_all(engine)

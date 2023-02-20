@@ -1,3 +1,6 @@
+"""
+Defines the CRUD for the investors in the API.
+"""
 import sys
 import os
 
@@ -17,8 +20,10 @@ from config.db import session
 from starlette.status import HTTP_204_NO_CONTENT
 from typing import List
 
+#API router to include the routes in the API object in app.py
 investor_consolidated = APIRouter()
 
+#GET method to get all investors
 @investor_consolidated.get(
     "/investors",
     tags=["investors"],
@@ -30,6 +35,7 @@ def get_investors():
     return [{**row.__dict__, "Connections": [conn.__dict__ for conn in row.Connections]}
      for row in session.query(Consolidated).order_by(Consolidated.id).all()]
     
+#POST method to create one investor    
 @investor_consolidated.post('/investors', status_code=201)
 def post_investor(investor: Investor):
     new_investor_id = str(uuid.uuid3(uuid.NAMESPACE_URL, investor.Website))
@@ -50,6 +56,7 @@ def post_investor(investor: Investor):
     return {**session.query(Consolidated).filter(Consolidated.id == new_investor_id)[0].__dict__, 
             "Connections": conns}
 
+#GET method to obtain one investors with its id
 @investor_consolidated.get(
     "/investors/{id}",
     tags=["investors"],
@@ -67,6 +74,7 @@ def get_investor(id: str):
     return result_dict
 
 
+#UPDATE method to modify one investor
 @investor_consolidated.put(
     "/investors/{id}", tags=["investors"], response_model=Investor, description="Update an Investor by Id"
 )
@@ -87,6 +95,7 @@ def update_investor(investor: Investor, id: str):
     return result_dict
 
 
+#DELETE method to delete one investor based on its id
 @investor_consolidated.delete("/investors/{id}", tags=["investors"], status_code=HTTP_204_NO_CONTENT)
 def delete_investors(id: str):
     investor_obj = session.query(Consolidated).filter(Consolidated.id == id)[0]
