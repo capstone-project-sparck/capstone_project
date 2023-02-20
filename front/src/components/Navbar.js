@@ -14,9 +14,10 @@ export default function NavbarC (props) {
                     <img src={imgUrl} alt="TechStarLogo" />
                     <Navbar.Toggle className="toggle" aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id="basic-navbar-nav">
-          <Nav variant="pills" className="nav nav-pills red">
+          <Nav variant="pills" className="nav">
             <Nav.Link as={Link} to="/Sources" className="whiteText">Filters</Nav.Link>
             <Nav.Link as={Link} to="/Contact" className="whiteText">Contact Us</Nav.Link>
+            <Nav.Link as={Link} to="/Connections" className="whiteText">Connections</Nav.Link>
             <Nav.Link as={Link} to="/" className="whiteText" onClick={()=>{props.setLoginPass(false)}}>Log Out</Nav.Link>
             <Nav.Link as={Link} to="/SingUp" className="whiteText">Sing Up</Nav.Link>
             </Nav>

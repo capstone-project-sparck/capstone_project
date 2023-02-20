@@ -3,7 +3,9 @@ import Login from "./login";
 import Filters from "./Filters";
 import Contact from "./contact";
 import Protected from "./protected";
+import Connections from "./Connections";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+
 
 export default function App(){
 
@@ -43,6 +45,7 @@ export default function App(){
         <Route element={<Protected loginPass={loginPass}/>}>
             <Route path="/Sources" element={<Filters className="filters" setLoginPass={setLoginPass} />} />
             <Route path="/Contact" element={<Contact setLoginPass={setLoginPass} />} />
+            <Route path="/Connections" element={<Connections setLoginPass={setLoginPass} />} />
             {/*<Route path="/About" element={<About />} />*/}
         </Route>
   </Routes>

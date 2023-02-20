@@ -218,9 +218,9 @@ export default function Filters(props) {
       }  
 
 
-    return(
-        <div style={{backgroundColor:"black", minHeight:"100vh"}}>
+    return(<>
         <NavbarC />
+        <div style={{backgroundColor:"black", minHeight:"100vh"}}>
         <div style={{backgroundColor:"black", paddingTop:"1rem"}}>{!turnFilters?
         <div className="divFilter">
         <Stack className="stackInputs" gap={0}>
@@ -276,10 +276,11 @@ export default function Filters(props) {
         <div className="contTable">{turnFilters?
             <div className="table">
               <MaterialReactTable
+                enableColumnResizing
                 columns={columns}
                 data={turnFilters?map_obj:dataApi}
                 initialState={{ density: 'compact', pagination: { pageSize: 25, pageIndex: 0 }, 
-                                columnVisibility: { id: false }}}
+                                columnVisibility: { id: true }}}
                 muiTableContainerProps={{ sx: {maxHeight:"22rem"} }}
                 muiTableProps={{
                   sx: {
@@ -331,5 +332,6 @@ export default function Filters(props) {
               </div>:<></>}
             </div>
         </div>
+        </>
     )
 }

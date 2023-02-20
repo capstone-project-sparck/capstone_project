@@ -1,0 +1,47 @@
+.connectionSearch {
+    background-color: black;
+    color: white;
+    width: 25rem;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    
+}
+
+.connectionSearch label {
+    margin-bottom: 1rem;
+    font-size: x-large;
+}
+
+
+.connectionSearch input {
+    border: black;
+    background-color: white;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 4px 2px rgb(193, 192, 192);
+    width: 80%;
+    height: 2rem;
+}
+
+.connectionSearch p{
+    color: rgb(114, 114, 114);
+    font-size: small
+}
+
+.tableC {
+    width: 50%;
+    min-width: 20rem;
+}
+
+.ConnectionRoot {
+    background-color: black;
+}
+
+.contentCon{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 5rem;
+}

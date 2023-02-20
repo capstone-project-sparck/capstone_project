@@ -1,17 +1,18 @@
 .navbarC {
     box-shadow: 1px 1px 5px 1px rgb(45, 45, 45);
     background-color: black;
+    min-height: 7rem;
 }
 
 .Container img {
-    max-width: 30%;
+    max-width: 17%;
     min-width: 150px;
 }
 
 .whiteText {
     margin-left: 10px;
     color: white !important;
-    font-size: larger !important;
+    font-size: 1.4rem !important;
     transition: 1s !important;
 }
 
@@ -22,6 +23,9 @@
     transition: 1s !important;
 }
 
+.nav {
+    margin-left: 23%;
+}
 
 .toggle {
     background-color: rgb(18, 18, 18) !important;
