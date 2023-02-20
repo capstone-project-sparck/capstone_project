@@ -32,9 +32,9 @@ export default function App(){
             <Route path="/Contact" element={<Contact setLoginPass={setLoginPass} />} />
             <Route path="/Connections" element={<Connections setLoginPass={setLoginPass} />} />
             {/*<Route path="/About" element={<About />} />*/}
-        </Route>
             <Route path="/SingUp" element={ <SingUp getCredentials={getCredentials} credentials={credentials} 
             setLoginPass={setLoginPass} loginPass={loginPass}/> }/>
+        </Route>
   </Routes>
   </BrowserRouter>
   </>)}
