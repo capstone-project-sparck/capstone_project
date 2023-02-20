@@ -16,12 +16,13 @@ export default function SingUp(props){
     const ExcelSheet = ExportExcel.ExcelSheet;
     const ExcelColumn = ExportExcel.ExcelColumn;
     const getdata = JSON.parse(window.localStorage.getItem('login'));
-
+    
     function SingUpForm(e) {
-      e.preventDefault();
+      console.log(getdata)
       const email = emailInputRef.current.value;
       const password = passwordInputRef.current.value;
       const hashedPassword = bcrypt.hashSync(password, 10);
+      e.preventDefault();
       let list_users = getdata;
       
       // Call Post API here
@@ -61,10 +62,10 @@ export default function SingUp(props){
         <Form.Check type="checkbox" label="Check me out" />
       </Form.Group>
       <ExcelFile element={<Button type="submit" className="loginButton" onClick={(e)=>SingUpForm(e)} name="sing up">
-      Sing Up</Button>} filename={"Users_list.csv"}>
+      Sing Up</Button>} filename={"Users_list"}>
         <ExcelSheet data={getdata} name={"Users"}>
-          <ExcelColumn label="Email" value={emailInputRef} />
-          <ExcelColumn label="Password" value={passwordInputRef} />
+          <ExcelColumn label="email" value={"email"} />
+          <ExcelColumn label="hashedPassword" value={"hashedPassword"} />
         </ExcelSheet>
       </ExcelFile>
     </Form>
