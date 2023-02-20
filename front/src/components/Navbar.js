@@ -3,10 +3,24 @@ import Navbar from "react-bootstrap/Navbar"
 import Nav from "react-bootstrap/Nav"
 import { Link } from "react-router-dom"
 import "../style/navbar.css"
+//import { Navigate } from "react-router-dom"
 
 
 export default function NavbarC (props) {
     const imgUrl="https://cdn.brandfolder.io/70W92OEX/as/q0vc05-3hg50o-8p4uw5/logo-dark.png"
+    /*let allowAcces = false;
+
+    function inputCredential(e) {
+        e.preventDefault()
+        const credentialInputpassword = 'Techstars_dev';
+        let password = alert(prompt("Key: "))
+        if (credentialInputpassword !== password) {
+            allowAcces = false;
+        }
+        else {
+            allowAcces = true;
+        }
+    }*/
 
     return(<>
             <Navbar className="navbarC" expand="lg">
