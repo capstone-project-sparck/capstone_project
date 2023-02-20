@@ -1,3 +1,6 @@
+"""
+Structures the connections data to fit the database table.
+"""
 from investors_data_structuring import investors_data
 import pandas as pd
 import os
@@ -69,7 +72,6 @@ connections_data.rename(
 # Creation of connections column
 connections_data["Connections"] = connections_data["People_connected_to_investor"].str.split(
     '; ').map(split_list).map(lambda x: x[:20])
-# connections_data['Connections'] = connections_data["connections_list"].map(split_list)
 
 # Rearranging of data
 connections_data_rearranged = connections_data[[

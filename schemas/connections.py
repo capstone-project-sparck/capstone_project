@@ -1,3 +1,6 @@
+"""
+Defines the schema for an connections object for the API.
+"""
 from pydantic import BaseModel
 from typing import Optional
 

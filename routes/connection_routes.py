@@ -1,3 +1,6 @@
+"""
+Defines the CRUD for the connections in the API.
+"""
 import sys
 import os
 
@@ -17,8 +20,10 @@ from config.db import session
 from starlette.status import HTTP_204_NO_CONTENT
 from typing import List
 
+#API router to include the routes in the API object in app.py
 connection_consolidated = APIRouter()
 
+#GET method to get all connections
 @connection_consolidated.get(
     "/connections",
     tags=["connections"],
@@ -30,6 +35,7 @@ def get_connections():
     return [row.__dict__ for row in session.query(Connection_table).order_by(Connection_table.id).all()]
     
 
+#GET method to obtain one connection with its id
 @connection_consolidated.get(
     "/connections/{id}",
     tags=["connections"],
@@ -45,6 +51,7 @@ def get_connections(id: str):
     return result
 
 
+#UPDATE method to modify one connection
 @connection_consolidated.put(
     "/connections/{id}",
     tags=["connections"], 
@@ -65,6 +72,7 @@ def update_connection(connection: Connection, id: str):
     return result
 
 
+#DELETE method to delete one connection based on its id
 @connection_consolidated.delete("/connections/{id}", tags=["connections"], status_code=HTTP_204_NO_CONTENT)
 def delete_connection(id: str):
     conn_obj = session.query(Connection_table).filter(Connection_table.investors_id == id)
