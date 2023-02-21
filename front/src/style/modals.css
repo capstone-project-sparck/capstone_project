@@ -1,0 +1,22 @@
+.modalButton {
+    font-size: larger !important;
+    border-radius: 10px !important;    
+    background-color: #39C463 !important;
+    border: 1px solid #39C463 !important;
+    transition: 1s;
+    text-shadow: 1px 1px rgb(144, 137, 137);
+}
+
+.modal-content{
+    background-color: black !important;
+    color: white !important;
+    border: 1px solid #383838;
+}
+
+.modal-header {
+    border-bottom: 1px solid #353535 !important;
+}
+
+.modal-footer {
+    border-top: 1px solid #353535 !important;
+}
