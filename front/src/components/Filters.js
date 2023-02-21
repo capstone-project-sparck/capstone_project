@@ -286,7 +286,7 @@ export default function Filters(props) {
                 columns={columns}
                 data={turnFilters?map_obj:dataApi}
                 initialState={{ density: 'compact', pagination: { pageSize: 25, pageIndex: 0 }, 
-                                columnVisibility: { id: true }}}
+                                columnVisibility: { id: false }}}
                 muiTableContainerProps={{ sx: {maxHeight:"22rem"} }}
                 muiTableProps={{
                   sx: {

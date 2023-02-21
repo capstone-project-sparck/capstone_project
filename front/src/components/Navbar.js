@@ -25,7 +25,7 @@ export default function NavbarC (props) {
     return(<>
             <Navbar className="navbarC" expand="lg">
                 <Container className="Container">
-                    <img src={imgUrl} alt="TechStarLogo" />
+                    <Link className="linkImg" to="/Sources"><img  as={Link} to="/Sources" src={imgUrl} alt="TechStarLogo" /></Link>
                     <Navbar.Toggle className="toggle" aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id="basic-navbar-nav">
           <Nav variant="pills" className="nav">

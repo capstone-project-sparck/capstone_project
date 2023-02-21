@@ -4,8 +4,11 @@
     min-height: 7rem;
 }
 
-.Container img {
-    max-width: 17%;
+.linkImg{
+    max-width: 30%;
+}
+.linkImg img {
+    max-width: 50%;
     min-width: 150px;
 }
 
@@ -24,7 +27,6 @@
 }
 
 .nav {
-    margin-left: 23%;
 }
 
 .toggle {
