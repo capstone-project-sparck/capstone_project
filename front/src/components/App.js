@@ -27,13 +27,13 @@ export default function App(){
     <Route path="/" element={<Login setLoginPass={setLoginPass} loginPass={loginPass} 
         getCredentials={getCredentials} credentials={credentials}
         />} />
+        <Route path="/SingUp" element={ <SingUp getCredentials={getCredentials} credentials={credentials} 
+        setLoginPass={setLoginPass} loginPass={loginPass}/> }/>
         <Route element={<Protected loginPass={loginPass}/>}>
             <Route path="/Sources" element={<Filters className="filters" setLoginPass={setLoginPass} />} />
             <Route path="/Contact" element={<Contact setLoginPass={setLoginPass} />} />
             <Route path="/Connections" element={<Connections setLoginPass={setLoginPass} />} />
             {/*<Route path="/About" element={<About />} />*/}
-            <Route path="/SingUp" element={ <SingUp getCredentials={getCredentials} credentials={credentials} 
-            setLoginPass={setLoginPass} loginPass={loginPass}/> }/>
         </Route>
   </Routes>
   </BrowserRouter>

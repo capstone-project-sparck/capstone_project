@@ -10,6 +10,7 @@ import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import { ExportToCsv } from 'export-to-csv';
 import DataJson from "./data.json"
 import Footers from "./footer";
+import ModalTuto from "./modal";
 
 
 export default function Filters(props) { 
@@ -23,6 +24,10 @@ export default function Filters(props) {
     let [turnFilters, setTurnFilters] = React.useState(false)
     let [dataApi, setDataApi] = React.useState([])
     let [header, setHeader] = React.useState([])
+    const [show, setShow] = React.useState(true);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     //useEffect to avoid infinite loop getting data from api
 
@@ -219,6 +224,7 @@ export default function Filters(props) {
 
 
     return(<>
+        <ModalTuto handleClose={handleClose} handleShow={handleShow} show={show} />
         <NavbarC />
         <div style={{backgroundColor:"black", minHeight:"100vh"}}>
         <div style={{backgroundColor:"black", paddingTop:"1rem"}}>{!turnFilters?

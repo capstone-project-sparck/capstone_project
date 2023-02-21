@@ -57,7 +57,7 @@ export default function Login(props){
         <Form.Control type="password" placeholder="Password" name="Password" ref={passwordInputRef} onChange={(e)=>props.getCredentials(e)} />
       </Form.Group>
       <Form.Group className="mb-4" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
+        <Form.Check type="checkbox" label="First time here?" />
       </Form.Group>
       <Button type="submit" className="loginButton" onClick={(e)=>loginForm(e)} name="login">{!props.loginPass?"Enter":<Navigate to="/Sources"/>}
     </Button>
