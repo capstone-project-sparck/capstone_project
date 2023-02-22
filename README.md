@@ -62,7 +62,8 @@ You first need to get into the home directoy and run the command `uvicorn app:ap
 
 ## How to Use the Project
 
-![ezgif com-video-to-gif (1)](https://user-images.githubusercontent.com/22607461/218871199-b585a3ef-2151-4596-a468-52bf5c69d68a.gif)
+![Untitled-video-Made-with-Clipchamp](https://user-images.githubusercontent.com/106627368/220689993-80017813-878e-4beb-98b7-7e72aa8ff39f.gif)
+
 
 ## Authors
 
