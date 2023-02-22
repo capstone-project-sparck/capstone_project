@@ -1,6 +1,6 @@
 import React from "react";
 import Login from "./login";
-import SingUp from "./SingUp"
+import SignUp from "./SignUp"
 import Filters from "./Filters";
 import Contact from "./Contact";
 import Protected from "./protected";
@@ -27,7 +27,7 @@ export default function App(){
     <Route path="/" element={<Login setLoginPass={setLoginPass} loginPass={loginPass} 
         getCredentials={getCredentials} credentials={credentials}
         />} />
-        <Route path="/SingUp" element={ <SingUp getCredentials={getCredentials} credentials={credentials} 
+        <Route path="/SignUp" element={ <SignUp getCredentials={getCredentials} credentials={credentials} 
         setLoginPass={setLoginPass} loginPass={loginPass}/> }/>
         <Route element={<Protected loginPass={loginPass}/>}>
             <Route path="/Sources" element={<Filters className="filters" setLoginPass={setLoginPass} />} />

@@ -4,11 +4,10 @@ import Button from "react-bootstrap/Button"
 import Image from "react-bootstrap/Image"
 import ExportExcel from "react-export-excel"
 import { useRef } from "react";
-import bcrypt from 'bcryptjs'
-import ExcelColumn from "react-export-excel/dist/ExcelPlugin/elements/ExcelColumn"
+import bcrypt from 'bcryptjs';
 //import {saveAs} from 'file-saver'
 
-export default function SingUp(props){
+export default function SignUp(props){
     const imgUrl="https://cdn.brandfolder.io/70W92OEX/as/q0vc05-3hg50o-8p4uw5/logo-dark.png"
     const emailInputRef = useRef()
     const passwordInputRef = useRef()
@@ -18,7 +17,6 @@ export default function SingUp(props){
     const getdata = JSON.parse(window.localStorage.getItem('login'));
     
     function SingUpForm(e) {
-      console.log(getdata)
       const email = emailInputRef.current.value;
       const password = passwordInputRef.current.value;
       const hashedPassword = bcrypt.hashSync(password, 10);
@@ -35,8 +33,7 @@ export default function SingUp(props){
       let users = JSON.stringify(list_users)
       window.localStorage.setItem('login', users)
 
-      console.log(users)
-      console.log("Welcome to TechStars")
+     
   }
 
     return(<div style={{backgroundColor:"black"}}>

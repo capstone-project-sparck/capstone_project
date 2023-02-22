@@ -8,7 +8,6 @@ import { Box, Typography } from '@mui/material';
 import MaterialReactTable from "material-react-table"
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import { ExportToCsv } from 'export-to-csv';
-import DataJson from "./data.json"
 import Footers from "./footer";
 import ModalTuto from "./modal";
 
@@ -42,7 +41,6 @@ export default function Filters(props) {
       getData()
   },[])
 
-  console.log(dataApi)
 
 
     /*
@@ -150,7 +148,7 @@ export default function Filters(props) {
     const csvData = dataApi.map((object)=>{
       return{...object, "Connections": JSON.stringify(object.Connections).replaceAll(/[/{}/[\]]/gm, '')}
     })
-    console.log(csvData)
+
     const handleExportData = () => {
       csvExporter.generateCsv(csvData);
     };
@@ -158,7 +156,6 @@ export default function Filters(props) {
     //filter creation with inputs
     function createFilter(event){
         setFilters((oldValue)=>{return ({...oldValue, [event.target.name]:event.target.value})})
-        console.log(filters)
     }
 
     /*not working properly right now
@@ -172,7 +169,6 @@ export default function Filters(props) {
         Preferred_Verticals:"", Preferred_Investment_Amount:"",
         };
         })
-        console.log(filters)
         //setFilters({})
     }
 
