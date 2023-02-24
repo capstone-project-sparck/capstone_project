@@ -8,6 +8,13 @@ import bcrypt from 'bcryptjs';
 //import {saveAs} from 'file-saver'
 
 export default function SignUp(props){
+
+  /*
+    this component is still in build stage
+    and will display the contacts of a particular
+    investor
+    */
+
     const imgUrl="https://cdn.brandfolder.io/70W92OEX/as/q0vc05-3hg50o-8p4uw5/logo-dark.png"
     const emailInputRef = useRef()
     const passwordInputRef = useRef()
@@ -56,7 +63,6 @@ export default function SignUp(props){
         <Form.Control type="password" placeholder="Password" name="Password" ref={passwordInputRef} onChange={(e)=>props.getCredentials(e)} />
       </Form.Group>
       <Form.Group className="mb-4" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
       </Form.Group>
       <ExcelFile element={<Button type="submit" className="loginButton" onClick={(e)=>SingUpForm(e)} name="sing up">
       Sing Up</Button>} filename={"Users_list"}>

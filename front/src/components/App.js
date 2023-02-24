@@ -10,9 +10,12 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 export default function App(){
 
+  //states to test login and credentials
+
   let [loginPass, setLoginPass] = React.useState(false)
-  
   let [credentials, setCredentials] = React.useState({})
+
+  //this function is use to set the email and password
 
   function getCredentials(event){
       setCredentials((oldValue)=>{
