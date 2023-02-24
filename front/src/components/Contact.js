@@ -11,6 +11,11 @@ import logoTweet from "../style/photos/logo/logoTweet.png"
 
 export default function Contact(props){
     
+    /*
+    Contact component will display all the information
+    of the team members, email, linkein and twitter
+    */
+
     return(
         <div style={{backgroundColor:"black"}}>
             <NavbarC setLoginPass={props.setLoginPass} />

@@ -5,6 +5,7 @@ import Image from "react-bootstrap/Image"
 import { Navigate } from "react-router-dom"
 import { useRef } from "react"
 import bcrypt from "bcryptjs"
+import { Link } from "react-router-dom"
 
 export default function Login(props){
     const imgUrl="https://cdn.brandfolder.io/70W92OEX/as/q0vc05-3hg50o-8p4uw5/logo-dark.png"
@@ -57,8 +58,12 @@ export default function Login(props){
         <Form.Control type="password" placeholder="Password" name="Password" ref={passwordInputRef} onChange={(e)=>props.getCredentials(e)} />
       </Form.Group>
       <Form.Group className="mb-4" controlId="formBasicCheckbox">
+        <div style={{display:"flex", flexFlow:"row"}}>
         <Form.Check type="checkbox" label="First time here?" />
+        <Link to="/SignUp" style={{marginLeft:"1rem"}}>Sign Up</Link>
+        </div>
       </Form.Group>
+
       <Button type="submit" className="loginButton" onClick={(e)=>loginForm(e)} name="login">{!props.loginPass?"Enter":<Navigate to="/Sources"/>}
     </Button>
     </Form>

@@ -1,6 +1,6 @@
 import React from "react";
 import Login from "./login";
-import SingUp from "./SingUp"
+import SignUp from "./SignUp"
 import Filters from "./Filters";
 import Contact from "./Contact";
 import Protected from "./protected";
@@ -10,9 +10,12 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 export default function App(){
 
+  //states to test login and credentials
+
   let [loginPass, setLoginPass] = React.useState(false)
-  
   let [credentials, setCredentials] = React.useState({})
+
+  //this function is use to set the email and password
 
   function getCredentials(event){
       setCredentials((oldValue)=>{
@@ -27,7 +30,7 @@ export default function App(){
     <Route path="/" element={<Login setLoginPass={setLoginPass} loginPass={loginPass} 
         getCredentials={getCredentials} credentials={credentials}
         />} />
-        <Route path="/SingUp" element={ <SingUp getCredentials={getCredentials} credentials={credentials} 
+        <Route path="/SignUp" element={ <SignUp getCredentials={getCredentials} credentials={credentials} 
         setLoginPass={setLoginPass} loginPass={loginPass}/> }/>
         <Route element={<Protected loginPass={loginPass}/>}>
             <Route path="/Sources" element={<Filters className="filters" setLoginPass={setLoginPass} />} />

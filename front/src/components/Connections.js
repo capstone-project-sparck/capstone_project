@@ -5,9 +5,14 @@ import React from "react";
 import Footer from "./footer";
 
 const Connections = (props) =>{
-
+    /*
+    this component is still in build stage
+    and will display the contacts of a particular
+    investor
+    */
     let [dataApi, setDataApi] = React.useState([])
 
+    //use to fetch data from the Api
     React.useEffect(()=>{
         const getData = async () => {
           const data = await fetch("http://127.0.0.1:8000/investors")
@@ -17,7 +22,7 @@ const Connections = (props) =>{
         getData()
     },[])
 
-    
+    //table construction 
     const columns = useMemo(
         () => [
         {
